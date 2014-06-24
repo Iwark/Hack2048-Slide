@@ -1,10 +1,6 @@
 
 # Hack2048
 
-From the terminal, pop in:
+<br>
 
-  ```yo reveal:slide "Slide Title"```
-
-Available options:
-
- ```--markdown --attributes --notes```
+「2048」というゲームで遊んでお待ちください。
