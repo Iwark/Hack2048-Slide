@@ -1,0 +1,36 @@
+.clear {
+  clear: both;
+}
+
+.half {
+  width: 50%;
+  &.left {
+    float: left;
+  }
+  &.right {
+    float: right;
+  }
+}
+p{
+  // text-align: left;
+  word-spacing: 10px;
+}
+
+img {
+  height: 400px;
+}
+
+pre {
+  letter-spacing: 0.1em;
+}
+
+ul {
+  width: 50%;
+}
+
+pre, code, var, samp, kbd, .mono, .keyword, .axapta {
+  font-family: Consolas, 'Courier New', Courier, Monaco, monospace !important;
+  span{
+    margin:0 !important;
+  }
+}
