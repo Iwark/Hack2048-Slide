@@ -2,12 +2,42 @@
     "index.md",
     "preparation.md",
     [
-        "create-project.md",
-        "create-project2.md"
+        "project/create-project.md",
+        "project/create-project2.md"
     ],
     [
-        "folder-change.md",
-        "folder-change2.md"
+        "project/folder-change.md",
+        "project/folder-change2.md"
     ],
-    "create-2048.md"
+    "project/create-2048.md",
+    [
+        "start-button/add-target.md",
+        "start-button/add-target2.md"
+    ],
+    [
+        "start-button/create-start-button.md",
+        "start-button/create-start-button2.md",
+        "start-button/create-start-button3.md"
+    ],
+    [
+        "start-button/start-button-class.md",
+        "start-button/start-button-class2.md",
+        "start-button/start-button-class3.md",
+        "start-button/start-button-class4.md"
+    ],
+    [
+        "start-button/autolayout.md",
+        "start-button/autolayout2.md",
+        "start-button/autolayout3.md",
+        "start-button/autolayout4.md"
+    ],
+    [
+        "game-screen/game-screen.md",
+        "game-screen/gameviewcontroller.md",
+        "game-screen/gameviewcontroller2.md",
+        "game-screen/gameviewcontroller3.md",
+        "game-screen/gameviewcontroller4.md",
+        "game-screen/gameviewcontroller5.md",
+        "game-screen/gameviewcontroller6.md"
+    ]
 ]
