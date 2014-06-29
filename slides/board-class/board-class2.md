@@ -34,6 +34,8 @@ class Board: NSObject {
                 rawBoard[y][x] = 0
             }
         }
+        updateLog = Int[][][]()
+        turn = 0
     }
 }
 ```
