@@ -26,6 +26,7 @@
         "start-button/start-button-class4.md"
     ],
     [
+        "start-button/whats-auto-layout.md",
         "start-button/autolayout.md",
         "start-button/autolayout2.md",
         "start-button/autolayout3.md",
@@ -51,6 +52,7 @@
         "board-class/board-class5.md"
     ],
     [
+        "swipe/how-to-swipe.md",
         "swipe/swipe.md",
         "swipe/swipe2.md",
         "swipe/swipe3.md",
@@ -62,6 +64,7 @@
         "ai/ai2.md",
         "ai/ai3.md",
         "ai/ai4.md",
-        "ai/ai5.md"
+        "ai/ai5.md",
+        "ai/ai6.md"
     ]
 ]

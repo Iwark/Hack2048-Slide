@@ -36,10 +36,7 @@ class GameViewController: UIViewController {
                 let pos = board.movementBoard[y][x]
                 if pos["x"] != x || pos["y"] != y {
                     self.view.bringSubviewToFront(self.tiles[idx])
-                    UIView.animateWithDuration(0.2, animations:
-                        { () in
-                            self.tiles[idx].moveTo(pos)
-                        }, completion: {(Bool) in })
+                    UIView.animateWithDuration(0.2, animations:{ self.tiles[idx].moveTo(pos) }, completion: {(Bool) in })
                 }
             }
         }

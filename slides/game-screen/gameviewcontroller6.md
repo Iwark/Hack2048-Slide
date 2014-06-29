@@ -15,7 +15,6 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews(){
-        println(__FUNCTION__)
         for y in 0..4 {
             for x in 0..4 {
                 let tileSize:CGFloat = boardView.frame.size.width / 4

@@ -1,6 +1,4 @@
-##  実行
-
-GameViewControllerを書き換え、実行してみよう。
+##  以下の変更をし、実行
 
 - ボードのサイズを4から、boardSizeに変更
 - tiles配列でタイルを管理する
@@ -21,7 +19,6 @@ class GameViewController: UIViewController {
   }
 
   override func viewDidLayoutSubviews(){
-      println(__FUNCTION__)
       for y in 0..board.boardSize {
           for x in 0..board.boardSize {
               let tileSize:CGFloat = boardView.frame.size.width / CGFloat(board.boardSize)
