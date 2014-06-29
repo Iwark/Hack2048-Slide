@@ -10,6 +10,7 @@
   src: url("../../lib/font/league_gothic-webfont.eot?#iefix") format("embedded-opentype"), url("../../lib/font/league_gothic-webfont.woff") format("woff"), url("../../lib/font/league_gothic-webfont.ttf") format("truetype"), url("../../lib/font/league_gothic-webfont.svg#LeagueGothicRegular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -159,14 +160,17 @@ body {
 p {
   word-spacing: 10px; }
 
+h5 {
+  text-align: left; }
+
+y {
+  color: yellow; }
+
 img {
   height: 400px; }
 
 pre {
   letter-spacing: 0.1em; }
-
-ul {
-  width: 75%; }
 
 pre, code, var, samp, kbd, .mono, .keyword, .axapta {
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace !important; }

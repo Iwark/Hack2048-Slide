@@ -39,5 +39,26 @@
         "game-screen/gameviewcontroller4.md",
         "game-screen/gameviewcontroller5.md",
         "game-screen/gameviewcontroller6.md"
+    ],
+    [
+        "board-class/board-class.md",
+        "board-class/array.md",
+        "board-class/dic-tuple.md",
+        "board-class/board-class2.md",
+        "board-class/method.md",
+        "board-class/board-class3.md",
+        "board-class/board-class4.md",
+        "board-class/board-class5.md"
+    ],
+    [
+        "swipe/swipe.md",
+        "swipe/swipe2.md",
+        "swipe/swipe3.md",
+        "swipe/swipe4.md",
+        "swipe/swipe5.md"
+    ],
+    [
+    "ai/ai.md",
+    "ai/ai2.md"
     ]
 ]
