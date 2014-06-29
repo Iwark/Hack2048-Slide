@@ -6,3 +6,5 @@
 
 Net: iwarkphone  
 Pass: 12348765  
+
+http://iwark.github.io/Hack2048-Slide/

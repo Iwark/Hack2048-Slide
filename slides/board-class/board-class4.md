@@ -17,7 +17,7 @@ func getHue(num:Int, hue:CGFloat = 60) -> CGFloat{
 func setNumber(num:Int){
     if num == 0 {
         self.text = ""
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.clearColor()
     } else {
         self.text = String(num)
         self.backgroundColor = UIColor(hue: getHue(num)/360, saturation: 1.0, brightness: 1.0, alpha: 1.0)
