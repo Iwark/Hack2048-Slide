@@ -14,6 +14,8 @@
 
 ```
 
+<br>
+
 タプル: 複数の値を１つの混合値として扱う
 
 ```
@@ -22,8 +24,4 @@
 
   var point = (x:0, y:1)
   // -> point.x = 0, point.y = 1
-
-  var points = Array<(x:Int, y:Int)>()
-  points[0] = (0, 1)
-  points[1] = (2, 0)
 ```

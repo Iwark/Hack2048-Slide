@@ -2,9 +2,8 @@
 
 <br>
 
-まずは１行。返り値は、無くても良いOptional  
+まずは１行の場合。返り値は、Optionalというやつ。  
 fromとtoがあるのは、アニメーションのため。  
-もっと効率よくできる？  
 
 ```swift
 // GameViewController.swift

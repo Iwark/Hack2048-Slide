@@ -8,9 +8,8 @@ GameOverの判定を行う。
 // Board.swift
 func undo(){
     if(turn > 0){
-        rawBoard = self.updateLog[turn-2].copy()
-        self.updateLog.removeAtIndex(turn-1)
-        self.generateNumber()
+        rawBoard = self.updateLog[turn-1].copy()
+        self.updateLog.removeAtIndex(turn)
         --turn
     }
 }
@@ -26,8 +25,7 @@ func isGameOver() -> Bool{
     }
 
     for dir in [Direction.Right, Direction.Up]{
-        if(swipeBoard(dir)){
-            self.undo()
+        if(swipeBoard(dir, virtual:true)){
             return false
         }
     }

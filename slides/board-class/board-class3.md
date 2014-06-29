@@ -35,6 +35,9 @@ class Board: NSObject {
     let x = randomPos % boardSize
     rawBoard[y][x] = 2
 
+    updateLog += rawBoard.copy()
+    ++turn
+
     return randomPos
   }
 }

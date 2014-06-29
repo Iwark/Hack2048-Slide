@@ -25,6 +25,7 @@ class Board: NSObject {
             rawBoard += Int[](count: boardSize, repeatedValue: 0)
             movementBoard += Points(count:boardSize, repeatedValue:["x":0, "y":0])
         }
+        updateLog += rawBoard.copy()
     }
 
     // start a new game
@@ -35,6 +36,7 @@ class Board: NSObject {
             }
         }
         updateLog = Int[][][]()
+        updateLog += rawBoard.copy()
         turn = 0
     }
 }
