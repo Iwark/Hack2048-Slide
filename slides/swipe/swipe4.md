@@ -13,7 +13,7 @@ class TileLabel: UILabel {
 
     func moveTo(pos:Point){
         let size = self.frame.size.width
-        self.frame = CGRectMake( size * CGFloat(pos.x), size * CGFloat(pos.y), size, size )
+        self.frame = CGRectMake( size * CGFloat(pos["x"]), size * CGFloat(pos["y"]), size, size )
     }
 }
 
