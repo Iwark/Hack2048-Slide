@@ -18,7 +18,7 @@ class Board: NSObject {
 
     init(){
         super.init()
-        for _ in 0..<boardSize {
+        for _ in 0..<BOARD_SIZE {
             // 配列の初期化
             rawBoard += [Int](count: BOARD_SIZE, repeatedValue: 0)
         }
