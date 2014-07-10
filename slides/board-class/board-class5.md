@@ -17,9 +17,9 @@ class GameViewController: UIViewController {
   }
 
   override func viewDidLayoutSubviews(){
-    for y in 0..<board.boardSize {
-      for x in 0..<board.boardSize {
-        let tileSize:CGFloat = boardView.frame.size.width / CGFloat(board.boardSize)
+    for y in 0..<BOARD_SIZE {
+      for x in 0..<BOARD_SIZE {
+        let tileSize:CGFloat = boardView.frame.size.width / CGFloat(BOARD_SIZE)
         let tile = TileLabel(frame:CGRectMake(tileSize * CGFloat(x), tileSize * CGFloat(y), tileSize, tileSize))
         boardView.addSubview(tile)
         tiles += tile

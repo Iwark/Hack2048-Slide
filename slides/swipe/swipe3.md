@@ -43,9 +43,9 @@ class GameViewController: UIViewController {
     }
 
     func updateScreen(timer:NSTimer){
-        for y in 0..board.boardSize {
-            for x in 0..board.boardSize {
-                let idx:Int = y * board.boardSize + x
+        for y in 0..<BOARD_SIZE {
+            for x in 0..<BOARD_SIZE {
+                let idx:Int = y * BOARD_SIZE + x
                 let num:Int = board.rawBoard[y][x]
                 tiles[idx].setNumber(num)
             }

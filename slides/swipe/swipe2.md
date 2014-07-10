@@ -13,8 +13,6 @@ virtualがtrueの時は、実際には動かさず、結果だけを返す。
 */
 func swipeBoard(dir:Direction, virtual:Bool = false) -> [[Int]] {
     
-    var isChanged = false
-    
     var swipedBoard = rawBoard
     
     for line in 0..<BOARD_SIZE {
