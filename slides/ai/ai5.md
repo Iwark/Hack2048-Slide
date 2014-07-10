@@ -1,27 +1,8 @@
 ##  AIクラス
 
-ここでは次の手しか考えない、弱いAIを作る。  
-また、Boardクラスにスワイプ可能な方角の配列を返す、  
-swipableDirectionsメソッドを追加しておく。
+アルファベータ法で実装する。  
 
 ```swift
-// Board.swift
-
-class Board: NSObject {
-
-  // ...
-
-  func swipableDirections() -> Direction[]{
-    var results = Direction[]()
-    for dir in [Direction.Left, Direction.Down, Direction.Right, Direction.Up]{
-      if swipeBoard(dir, virtual:true){
-        results += dir
-      }
-    }
-    return results
-  }
-}
-
 // AlphaBetaAI.swift
 
 class AlphaBetaAI: NSObject {
@@ -35,27 +16,73 @@ class AlphaBetaAI: NSObject {
           return
       }
 
-      // if able to swipe only one direction, then swipe that direction immediately.
+      // スワイプ可能な方角が１カ所だけなら、そちらへスワイプする
       if swipableDirections.count == 1{
           board.swipeBoard(swipableDirections[0])
           return
       }
 
-      var maxScore = 0
-      var maxDir:Direction = .Left
-
-      for dir in swipableDirections {
-          board.swipeBoard(dir)
-          let score = Evaluator.evaluate(board)
-          board.undo()
-
-          if score > maxScore { maxScore = score; maxDir = dir }
-      }
+      var maxDir = alphabeta(board, limit: 3, alpha: Int.min, beta: Int.max).1
 
       board.swipeBoard(maxDir)
   }
+
+  class func alphabeta(board:Board, limit:Int, alpha:Int, beta:Int) -> (Int, Direction) {
+        
+      var maxDir = Direction.Right
+
+      let swipableDirections = board.swipableDirections()
+      if swipableDirections.count == 0 {
+          return (Evaluator.evaluate(board), maxDir)
+      }
+      
+      if limit == 0 { return (Evaluator.evaluate(board), maxDir) }
+      
+      if board.turn % 2 == 0 {
+          var min = Int.max
+          var newBeta = beta
+          let emptyPositions = board.getEmptyPositions()
+          for pos in emptyPositions {
+              let y = pos / BOARD_SIZE
+              let x = pos % BOARD_SIZE
+              board.setNumber(x, y)
+              newBeta = alphabeta(board, limit: limit-1, alpha:alpha, beta:newBeta).0
+              board.rawBoard[y][x] = 0
+              --board.turn
+              
+              if beta < newBeta {
+                  newBeta = beta
+              }
+              if alpha >= newBeta {
+                  return (alpha, maxDir)
+              }
+          }
+          println("turn: \(board.turn), beta: \(newBeta)")
+          return (newBeta, maxDir)
+      } else {
+          var max = Int.min
+          var newAlpha = alpha
+          for dir in swipableDirections {
+              let rawBoard = board.rawBoard
+              board.swipeBoard(dir)
+              newAlpha = alphabeta(board, limit: limit-1, alpha:newAlpha, beta:beta).0
+              board.rawBoard = rawBoard
+              --board.turn
+              
+              if alpha > newAlpha {
+                  newAlpha = alpha
+              } else {
+                  maxDir = dir
+              }
+              if newAlpha >= beta {
+                  return (beta, maxDir)
+              }
+          }
+          println("turn: \(board.turn), alpha: \(newAlpha)")
+          return (newAlpha, maxDir)
+      }
+  }
+
 }
 
 ```
-
-(発展) α-β法で、数手先まで読むようにしてみよう！

@@ -22,7 +22,7 @@ class GameViewController: UIViewController {
 
     if AIMode {
       AlphaBetaAI.swipe(board)
-      self.updateStatus()
+      self.updateScreen()
     }
   }
 
@@ -42,5 +42,3 @@ class GameViewController: UIViewController {
 
 }
 ```
-
-※ 参考: この弱小AIだと、128ぐらいでGameOverになる。

@@ -3,54 +3,54 @@
 <br>
 
 次にボード全体のスワイプ。  
-virtualがtrueの時は、実際には動かさず、  
-動けたかどうかの結果だけを返す。
+virtualがtrueの時は、実際には動かさず、結果だけを返す。  
+また、スワイプ可能な方角を返すメソッドを作っておく。
 
 ```swift
-func swipeBoard(dir:Direction, virtual:Bool = false) -> Bool {
-  var isChanged = false
-  for line in 0..boardSize {
-    let swipedLine:Dictionary<String, Int>[]? = self.swipeLine(line, dir:dir)
-
-    if let l = swipedLine {
-      isChanged = true
-      if !virtual {
-        for (idx,num) in enumerate(l) {
-          switch dir {
-          case .Right:
-            movementBoard[line][boardSize-1-num["from"]!] = ["x":boardSize-1-num["to"]!, "y":line]
-            rawBoard[line][boardSize-1-idx] = num["num"]!
-          case .Left:
-            movementBoard[line][num["from"]!] = ["x":num["to"]!, "y":line]
-            rawBoard[line][idx] = num["num"]!
-          case .Up:
-            movementBoard[num["from"]!][line] = ["x":line, "y":num["to"]!]
-            rawBoard[idx][line] = num["num"]!
-          case .Down:
-            movementBoard[boardSize-1-num["from"]!][line] = ["x":line, "y":boardSize-1-num["to"]!]
-            rawBoard[boardSize-1-idx][line] = num["num"]!
-          }
+/**
+* 盤面全体をスワイプさせる。
+* 盤面を返す
+*/
+func swipeBoard(dir:Direction, virtual:Bool = false) -> [[Int]] {
+    
+    var isChanged = false
+    
+    var swipedBoard = rawBoard
+    
+    for line in 0..<BOARD_SIZE {
+        let swipedLine = self.swipeLine(line, dir:dir)
+        for i in 0..<BOARD_SIZE {
+            switch dir {
+            case .Right, .Left:
+                swipedBoard[line][i] = swipedLine[i]
+            case .Up, .Down:
+                swipedBoard[i][line] = swipedLine[i]
+            }
         }
-      }
-    } else if(!virtual) {
-      for i in 0..boardSize {
-        switch dir {
-        case .Right, .Left:
-          movementBoard[line][i] = ["x":i, "y":line]
-        case .Up, .Down:
-          movementBoard[i][line] = ["x":line, "y":i]
-        }
-      }
     }
-  }
-
-  if isChanged {
     if !virtual{
-        updateLog += rawBoard.copy()
+        rawBoard = swipedBoard
         ++turn
     }
-    return true
-  }
-  else { return false }
+
+    return swipedBoard
+}
+
+/*
+* スワイプ可能な方角を返す
+*/
+func swipableDirections() -> [Direction]{
+    
+    var results = [Direction]()
+    for dir in [Direction.Left, Direction.Down, Direction.Right, Direction.Up]{
+        let swipedBoard = swipeBoard(dir, virtual:true)
+        for i in 0..<BOARD_SIZE {
+            if rawBoard[i] != swipedBoard[i] {
+                results += dir
+                break
+            }
+        }
+    }
+    return results
 }
 ```

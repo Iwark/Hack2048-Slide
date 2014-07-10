@@ -2,8 +2,9 @@
 
 <br>
 
-まずは１行の場合。返り値は、Optionalというやつ。  
-fromとtoがあるのは、アニメーションのため。  
+まずは１行の場合。
+
+<br>
 
 ```swift
 // GameViewController.swift
@@ -30,70 +31,58 @@ class GameViewController: UIViewController {
 
 // Board.swift
 
-func swipeLine(line:Int, dir:Direction) -> Dictionary<String, Int>[]? {
-        
-    var isChanged = false
+/**
+* 該当する行(列)で0以外の数値を配列に取得
+*/
+func getLinePositiveNumbers(line:Int, dir:Direction) -> [Int] {
     
-    var numbers = Dictionary<String, Int>[]()
-    for i in 0..boardSize {
+    var numbers = [Int]()
+    
+    for i in 0..<BOARD_SIZE {
+        var num = 0
         switch dir {
-        case .Right:
-            numbers += ["num":rawBoard[line][boardSize-1-i], "from":i, "to":i]
-        case .Left:
-            numbers += ["num":rawBoard[line][i], "from":i, "to":i]
-        case .Up:
-            numbers += ["num":rawBoard[i][line], "from":i, "to":i]
-        case .Down:
-            numbers += ["num":rawBoard[boardSize-1-i][line], "from":i, "to":i]
+        case .Right, .Left:
+            num = rawBoard[line][i]
+        case .Up, .Down:
+            num = rawBoard[i][line]
+        }
+        if num > 0 {
+            numbers += num
         }
     }
     
-    var num = 0
-    while num < boardSize-1 {
-        if(numbers[num]["num"] == 0 && numbers[num+1]["num"] > 0){
-            isChanged = true
-            numbers[num+1]["to"] = num
-            let tempNum = numbers[num+1]
-            numbers[num+1] = numbers[num]
-            numbers[num] = tempNum
-            num = 0 // need?
-        }else{
-            ++num
-        }
-    }
+    return numbers
     
+}
+
+/**
+* 1行(列)をスワイプさせる。
+* ex) [0, 2, 4, 4] -> [2, 8, 0, 0] (左の場合)
+*/
+func swipeLine(line:Int, dir:Direction) -> [Int] {
+    
+    // [0, 2, 4, 4] -> [2, 4, 4]
+    var numbers = getLinePositiveNumbers(line, dir: dir)
+
+    // [2, 4, 4] -> [2, 8]
     var i = 0
     while(i < numbers.count - 1){
-        if(numbers[i]["num"] == numbers[i+1]["num"] && numbers[i]["num"] != 0){
-            isChanged = true
-            numbers[i]["num"] = numbers[i]["num"]! * 2
-            numbers[i]["to"] = i
-            numbers[i+1]["num"] = 0
-            numbers[i+1]["to"] = i
-            ++i
+        if numbers[i] == numbers[i+1]{
+            numbers[i] = numbers[i] * 2
+            numbers.removeAtIndex(i+1)
         }
         ++i
     }
     
-    num = 0
-    while num < boardSize-1 {
-        if(numbers[num]["num"] == 0 && numbers[num+1]["num"] > 0){
-            isChanged = true
-            if(num+2 < boardSize && numbers[num+1]["to"] == numbers[num+2]["to"]){
-                numbers[num+2]["to"] = num
-            }
-            numbers[num+1]["to"] = num
-            let tempNum = numbers[num+1]
-            numbers[num+1] = numbers[num]
-            numbers[num] = tempNum
-            num = 0
-        }else{
-            ++num
-        }
+    // [2, 8] -> [2, 8, 0, 0]（左の場合）
+    switch dir {
+    case .Left, .Up:
+        numbers += [Int](count: BOARD_SIZE - numbers.count, repeatedValue: 0)
+    case .Right, .Down:
+        numbers = [Int](count: BOARD_SIZE - numbers.count, repeatedValue: 0) + numbers
     }
     
-    if isChanged { return numbers }
-    else { return nil }
+    return numbers
     
 }
 ```

@@ -2,5 +2,5 @@
 
 ![](img/gameviewcontroller.png)
 
-UIViewControllerのサブクラス、GameViewControllerの作成。  
-StoryBoardで関連づけし、Startで画面遷移するようにする。
+GameViewControllerの作成。  
+Startボタンで画面遷移するようにしておく。
