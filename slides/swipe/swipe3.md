@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // add swipe gesture
+        // スワイプジェスチャーの追加
         let dirs:UISwipeGestureRecognizerDirection[] = [.Right, .Left, .Up, .Down]
         for dir in dirs{
             let sgr = UISwipeGestureRecognizer(target: self, action: Selector("swiped:"))
@@ -26,29 +26,20 @@ class GameViewController: UIViewController {
     // ...
 
     func swiped(sender: UISwipeGestureRecognizer){
-        if animating { return; }
-        animating = true;
+        let swipableDirections = board.swipableDirections()
 
         var isSwiped = false
-
-        let dirs:Direction[] = [.Right, .Left, .Up, .Down]
-        for dir in dirs{
+        for dir in swipableDirections{
             if dir.swipeDir() == sender.direction.value{
-                isSwiped = board.swipeBoard(dir)
+                isSwiped = true
+                board.swipeBoard(dir)
                 break
             }
         }
 
         if isSwiped {
-            self.updateStatus()
-        } else {
-            animating = false;
+            self.updateScreen()
         }
-    }
-
-    func updateStatus(){
-        // after 0.25 seconds
-        let timer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("updateScreen:"), userInfo: nil, repeats: false)
     }
 
     func updateScreen(timer:NSTimer){
@@ -62,7 +53,6 @@ class GameViewController: UIViewController {
 
         let generatedPos = board.generateNumber()
         tiles[generatedPos].setNumber(2)
-        animating = false;
     }
 }
 ```

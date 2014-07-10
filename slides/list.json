@@ -1,6 +1,5 @@
 [
     "index.md",
-    "preparation.md",
     [
         "project/create-project.md",
         "project/create-project2.md"
@@ -10,10 +9,6 @@
         "project/folder-change2.md"
     ],
     "project/create-2048.md",
-    [
-        "start-button/add-target.md",
-        "start-button/add-target2.md"
-    ],
     [
         "start-button/create-start-button.md",
         "start-button/create-start-button2.md",
@@ -56,7 +51,6 @@
         "swipe/swipe.md",
         "swipe/swipe2.md",
         "swipe/swipe3.md",
-        "swipe/swipe4.md",
         "swipe/swipe5.md"
     ],
     [

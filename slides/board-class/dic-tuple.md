@@ -8,7 +8,7 @@
   var fruit = ["apple":"good", "banana":"bad"]
   // -> fruit["apple"] = "good", fruit["banana"] = "bad"
 
-  var seiseki = Dictionary<String,Int>()
+  var seiseki = [String:Int]()
   seiseki["kokugo"] = 40
   seiseki["english"] = 80
 

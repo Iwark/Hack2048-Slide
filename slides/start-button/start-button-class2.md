@@ -3,7 +3,6 @@
 <br>
 
 * @IBDesignable : LiveRenderingをするクラス
-  * ターゲットを分ける必要がある。
   * didSetで値をセットする
 * @IBInspectable : IBで値を調節できる。
 
